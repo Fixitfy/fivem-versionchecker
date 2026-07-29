@@ -6,5 +6,30 @@
       "First public release of fx-fishing — Fishing & Scuba Diving System (QBCore / Qbox / ESX)."
     ],
     "updateFiles": []
+  },
+  {
+    "version": "1.0.1",
+    "date": "2026-07-29",
+    "changelog": [
+      "Hourly dynamic market: price multipliers now change on the hour (xx:00) and are deterministic — a server restart no longer resets prices and every player sees the same price.",
+      "Treasure (diving) prices are now connected to the same market engine on their own independent curve (Config.Diving.Market).",
+      "New countdown banner above the market panels: server time, next update time, time left and an hourly progress line (highlighted during the last 5 minutes).",
+      "Open panels refresh themselves on the hourly tick, including the sell-tab estimates.",
+      "Market exclusions are now configurable via Config.Career.Market.exclude instead of being hard-coded; the old 5-minute random-walk behaviour is still available with mode = \"interval\"."
+    ],
+    "updateFiles": [
+      "server/market.lua",
+      "server/career.lua",
+      "server/diving.lua",
+      "client/nui.lua",
+      "client/diving.lua",
+      "config/config_career.lua",
+      "config/config_diving.lua",
+      "ui/js/app.js",
+      "ui/css/style.css",
+      "locale/locales/tr.lua",
+      "locale/locales/en.lua",
+      "fxmanifest.lua"
+    ]
   }
 ]
