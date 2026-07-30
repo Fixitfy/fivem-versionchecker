@@ -31,5 +31,29 @@
       "locale/locales/en.lua",
       "fxmanifest.lua"
     ]
+  },
+  {
+    "version": "1.0.2",
+    "date": "2026-07-30",
+    "changelog": [
+      "New NUI catch minigame system replacing the ox_lib skill check — 4 types ship in the UI: timing (sweep bar), tension (hold-to-reel with inertia), sequence (W/A/S/D series) and reel (spinning ring).",
+      "Minigame type is chosen by the server owner via Config.Minigame.Type, with an optional random mode (Config.Minigame.Random) and per-species overrides (Config.Minigame.PerFish).",
+      "Difficulty presets (easy / medium / hard / expert) are read from each species' existing skillCheck entry and can be fine-tuned per minigame type via Config.Minigame.PerType — tension gets its own softer curve.",
+      "Catch quality (0-1) is validated server-side and scales the reward: up to +25% XP and a weight roll biased toward the species' upper band (Config.Minigame.QualityBonus).",
+      "Safety timeout added: if the NUI sends no result within Config.Minigame.TimeoutMs, the fish escapes.",
+      "The legacy ox_lib skillCheck is still available with Config.Minigame.enabled = false."
+    ],
+    "updateFiles": [
+      "client/minigame.lua",
+      "client/main.lua",
+      "server/main.lua",
+      "config/config.lua",
+      "ui/index.html",
+      "ui/js/minigame.js",
+      "ui/css/style.css",
+      "locale/locales/tr.lua",
+      "locale/locales/en.lua",
+      "fxmanifest.lua"
+    ]
   }
 ]
