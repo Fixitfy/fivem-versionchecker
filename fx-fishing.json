@@ -55,5 +55,21 @@
       "locale/locales/en.lua",
       "fxmanifest.lua"
     ]
+  },
+  {
+    "version": "1.0.3",
+    "date": "2026-08-02",
+    "changelog": [
+      "Removed the illegal-fishing \"caught\" penalty entirely: no more automatic item seizure and no player-facing \"caught\" notification.",
+      "The heat/suspicion system and its HUD bar are unchanged; crossing the catch-chance threshold now only sends a dispatch alert to police, who handle the rest via roleplay (they can already search the player's inventory).",
+      "Removed the now-unused Config.Illegal.seizePercentOnCaught setting and the illegal_caught_feeling locale string."
+    ],
+    "updateFiles": [
+      "server/illegal.lua",
+      "config/config_illegal.lua",
+      "locale/locales/tr.lua",
+      "locale/locales/en.lua",
+      "fxmanifest.lua"
+    ]
   }
 ]
