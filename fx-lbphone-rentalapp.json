@@ -1,0 +1,10 @@
+[
+  {
+    "version": "1.0.0",
+    "date": "2026-08-04",
+    "changelog": [
+      "First public release of fx-lbphone-rentalapp — peer-to-peer vehicle rental app for LB Phone (QBCore / Qbox / ESX)."
+    ],
+    "updateFiles": []
+  }
+]

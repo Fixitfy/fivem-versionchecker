@@ -1,0 +1,10 @@
+[
+  {
+    "version": "1.0.0",
+    "date": "2026-08-04",
+    "changelog": [
+      "First public release of fx-lbphone-billing — invoice / billing app for LB Phone with Discord webhook logging (QBCore / Qbox / ESX)."
+    ],
+    "updateFiles": []
+  }
+]

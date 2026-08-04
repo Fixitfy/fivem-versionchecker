@@ -1,0 +1,10 @@
+[
+  {
+    "version": "1.0.0",
+    "date": "2026-08-04",
+    "changelog": [
+      "First public release of fx-lbphone-company — company management app for LB Phone — employees, ranks, company funds, audit log."
+    ],
+    "updateFiles": []
+  }
+]
