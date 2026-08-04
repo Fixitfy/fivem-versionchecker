@@ -1,0 +1,10 @@
+[
+  {
+    "version": "1.0.0",
+    "date": "2026-08-04",
+    "changelog": [
+      "First public release of fx-sound — 3D spatial Web Audio engine with real low-pass filtering and bass-boost EQ."
+    ],
+    "updateFiles": []
+  }
+]

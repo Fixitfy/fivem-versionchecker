@@ -17,7 +17,7 @@
 --     }
 --   ]
 --
--- Turn it off with Config.VersionCheck = false in __CONFIG__.
+-- Turn it off with __CFGVAR__.VersionCheck = false in __CONFIG__.
 -- Other resources can read the result with:
 --   exports['__NAME__']:GetVersionStatus()
 -- ============================================================
@@ -227,7 +227,7 @@ end
 -- ===================== BOOT =====================
 
 CreateThread(function()
-    if Config and Config.VersionCheck == false then
+    if __CFGVAR__ and __CFGVAR__.VersionCheck == false then
         Status.state = 'disabled'
         return
     end

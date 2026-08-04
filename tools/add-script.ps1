@@ -39,8 +39,13 @@ param(
     # layout: server/ for most, s/ for fx-hud, the root for flat resources.
     [string] $TargetFile = 'server/versionchecker.lua',
 
-    # Config file holding Config.VersionCheck, named in the generated header comment.
+    # Config file holding the VersionCheck flag, named in the generated header comment.
     [string] $ConfigFile = 'config.lua',
+
+    # The resource's config global. Almost every resource calls it Config, but not
+    # all do — fx-sound uses Sound. Get this wrong and the kill switch silently
+    # never fires, because the checker would test a nil global.
+    [string] $ConfigVar = 'Config',
 
     [string] $Version = '1.0.0',
 
@@ -71,7 +76,7 @@ if (Test-Path $luaPath) {
 }
 
 $lua = [System.IO.File]::ReadAllText($template)
-$lua = $lua.Replace('__NAME__', $Name).Replace('__CONFIG__', $ConfigFile)
+$lua = $lua.Replace('__NAME__', $Name).Replace('__CONFIG__', $ConfigFile).Replace('__CFGVAR__', $ConfigVar)
 Write-Utf8NoBom -Path $luaPath -Text $lua
 Write-Host "created  $luaPath" -ForegroundColor Green
 
@@ -113,6 +118,6 @@ Write-Host "  2. Same file, the version line:"
 Write-Host "       version $quote$Version$quote" -ForegroundColor Yellow
 Write-Host ""
 Write-Host "  3. $(Join-Path $ResourcePath $ConfigFile):"
-Write-Host "       Config.VersionCheck = true" -ForegroundColor Yellow
+Write-Host "       $ConfigVar.VersionCheck = true" -ForegroundColor Yellow
 Write-Host ""
 Write-Host "Then add the row to README.md and push." -ForegroundColor Cyan

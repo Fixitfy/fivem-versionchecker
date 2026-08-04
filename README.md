@@ -89,8 +89,18 @@ few minutes to reach servers.
 
 That renders `_template/versionchecker.lua` into the resource and creates
 `fx-garage.json`. Use `-TargetFile` when the resource has no `server/` folder
-(fx-hud uses `s/`, fx-foodpacket uses the root) and `-ConfigFile` when
-`Config.VersionCheck` lives somewhere other than `config.lua`.
+(fx-hud uses `s/`, fx-foodpacket uses the root) and `-ConfigFile` when the
+VersionCheck flag lives somewhere other than `config.lua`.
+
+`-ConfigVar` matters more than it looks. The checker's kill switch tests the
+resource's config global, and most — but not all — resources call it `Config`;
+fx-sound calls it `Sound`. Pass the wrong name and the switch tests a nil global,
+so `VersionCheck = false` silently does nothing:
+
+```powershell
+.\tools\add-script.ps1 -Name fx-sound -ResourcePath "..\fx-sound" -ConfigVar Sound `
+    -Description "3D spatial Web Audio engine."
+```
 
 The `fxmanifest.lua` and `config.lua` edits stay manual — every resource orders
 its `server_scripts` differently, and splicing a line into someone else's load
@@ -111,5 +121,6 @@ lines to paste.
 | fx-lbphone-music | [fx-lbphone-music.json](fx-lbphone-music.json) | `server/versionchecker.lua` |
 | fx-lbphone-rentalapp | [fx-lbphone-rentalapp.json](fx-lbphone-rentalapp.json) | `server/versionchecker.lua` |
 | fx-multicharacter | [fx-multicharacter.json](fx-multicharacter.json) | `server/versionchecker.lua` |
+| fx-sound | [fx-sound.json](fx-sound.json) | `server/versionchecker.lua` |
 | fx-stash | [fx-stash.json](fx-stash.json) | `server/versionchecker.lua` |
 | fx-weed | [fx-weed.json](fx-weed.json) | `server/versionchecker.lua` |
