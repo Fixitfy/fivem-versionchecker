@@ -6,5 +6,23 @@
       "First public release of fx-sound — 3D spatial Web Audio engine with real low-pass filtering and bass-boost EQ."
     ],
     "updateFiles": []
+  },
+  {
+    "version": "1.1.0",
+    "date": "2026-08-05",
+    "changelog": [
+      "New SetPositions export: one sound can now be anchored at SEVERAL points at once (multi-cabinet PA). The engine fans the single media source out into one panner per point and sums them, exactly like a real rig feeding N cabinets from one amp signal.",
+      "This replaces the two broken ways of covering a large area. Playing the same track N times needs N media elements, and those never stay sample-locked - the drift between them is audible as echo and comb filtering. Teleporting a single panner to the nearest cabinet is no better: while it slides between cabinets the source is briefly far from everyone and the whole field dips, and standing between two cabinets locks the sound to just one of them. Summing one signal across many panners has neither problem - no second copy so no drift, no delay between arms so no comb filtering, and contributions add so there is no dropout in the gaps. The nearest cabinet still dominates, which keeps localisation correct.",
+      "A point may carry a heading, which makes that cabinet DIRECTIONAL - full level in front, cone.outerGain behind - instead of an omnidirectional floating point. The cone defaults to { inner = 100, outer = 300, outerGain = 0.5 } and is tunable per call.",
+      "SetSpatial now accepts a list of points as well as a single one, so the whole fan-out is rebuilt when a sound comes back to 3D. Previously going 2D tore every arm off the graph and only the first was ever restored.",
+      "SetDistance now applies to every cabinet in a rig instead of only the first one.",
+      "Fully backward compatible: no existing export changed its signature or behaviour. Passing a single point to SetPositions is identical to SetPosition."
+    ],
+    "updateFiles": [
+      "client/main.lua",
+      "html/engine.js",
+      "html/nui.js",
+      "fxmanifest.lua"
+    ]
   }
 ]
