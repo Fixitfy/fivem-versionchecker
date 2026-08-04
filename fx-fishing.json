@@ -71,5 +71,26 @@
       "locale/locales/en.lua",
       "fxmanifest.lua"
     ]
+  },
+  {
+    "version": "1.0.4",
+    "date": "2026-08-04",
+    "critical": true,
+    "changelog": [
+      "SECURITY/EXPLOIT FIX: a crew dive multiplied the crate count by the crew size at mission start, but nothing ever checked whether the crew actually dived. A player could invite members, leave them standing at the shop, dive alone and loot every extra crate plus the crew XP bonus by himself.",
+      "Crew crates are now gated live: at any moment only site.crateCount x (members currently diving inside the mission area) crates can be opened. The rest stay locked until the crew shows up. The check runs on every crate search, so members who leave mid-dive re-lock the remaining crates.",
+      "The crew XP multiplier now follows the number of members actually present at the site instead of the roster size.",
+      "New Config.Diving.Team.Presence block tunes the check: area tolerance (radiusPad), whether being underwater is required, and a grace period (graceSec, default 120s) so tank swaps, deaths and short trips to the surface never lock a legitimate crew out. Set enabled = false to restore the old behaviour.",
+      "Solo and crew dives are now separate. The Dive Sites tab ALWAYS starts a solo mission: no crate multiplier, no XP bonus, and only your own zone cooldown is spent. Crew missions are started from the My Crew tab. Previously any dive started while in a crew of 2 or more silently became a crew mission and burnt every member's zone cooldown.",
+      "Crew members without manage rights can now start their own solo dive from the Dive Sites tab; they used to be rejected with a no-permission error.",
+      "Starting a dive while another mission is already active now shows a clear message instead of reporting your own name as being busy elsewhere."
+    ],
+    "updateFiles": [
+      "server/diving.lua",
+      "config/config_diving.lua",
+      "locale/locales/tr.lua",
+      "locale/locales/en.lua",
+      "fxmanifest.lua"
+    ]
   }
 ]
