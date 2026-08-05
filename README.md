@@ -123,4 +123,5 @@ lines to paste.
 | fx-multicharacter | [fx-multicharacter.json](fx-multicharacter.json) | `server/versionchecker.lua` |
 | fx-sound | [fx-sound.json](fx-sound.json) | `server/versionchecker.lua` |
 | fx-stash | [fx-stash.json](fx-stash.json) | `server/versionchecker.lua` |
+| fx-weapondamage | [fx-weapondamage.json](fx-weapondamage.json) | `server/versionchecker.lua` |
 | fx-weed | [fx-weed.json](fx-weed.json) | `server/versionchecker.lua` |

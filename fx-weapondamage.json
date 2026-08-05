@@ -1,0 +1,10 @@
+[
+  {
+    "version": "1.0.0",
+    "date": "2026-08-05",
+    "changelog": [
+      "First public release of fx-weapondamage — combat tuning workstation with a live test bench (QBCore / Qbox / ESX)."
+    ],
+    "updateFiles": []
+  }
+]
