@@ -6,5 +6,32 @@
       "First public release of fx-admin — modern, themed, optimized admin panel for QBCore, Qbox and ESX."
     ],
     "updateFiles": []
+  },
+  {
+    "version": "1.1.0",
+    "date": "2026-08-06",
+    "changelog": [
+      "New Gang Management page: the full Job Management toolset - bulk and per-selection removal, transfer to another gang, grade reset, single and bulk CK with backup and restore, member list with online/offline filter, search and CSV export - now works on gangs too. Jobs and gangs are two separate pages under the Jobs & Gangs nav group.",
+      "Jobs and gangs share ONE code path instead of duplicated code. Every layer (framework, database, business logic, UI) takes a kind parameter that is either job or gang, so a later fix lands on both sides at once. Omitting it means job, so nothing that called these functions before had to change.",
+      "Gang operations write to players.gang through SetGang using the gang JSON schema (no payment/onduty fields). Counts, personnel queries and the reset/transfer UPDATEs all pick their column from the category, and the count cache is now per category - one shared cache would have let gang counts overwrite job counts.",
+      "Discord logs are category-aware. Gang operations can go to their own Config.GangLogsWebhook and fall back to JobLogsWebhook then LogsWebhook. Embed title, field names (Old Gang / New Gang) and footer follow the category, and CK records from this page are tagged gangck so CK History and the restore log label them correctly.",
+      "Recent Actions is filtered per category: the job page no longer shows gang operations and vice versa. Entries written before this release carry no category field and are treated as job, so existing history stays intact.",
+      "New config keys: Config.JobManagement.GangResetTarget (default \"none\") is the gang a removed member is moved to, and Config.GangLogsWebhook (empty = falls back to the job webhook). Config.JobManagement.HistoryLimit is shared between job and gang history - raise it if both sides are used heavily.",
+      "ESX has no gang concept, so the Gang Management page stays empty there and every gang operation is rejected with a nogang error instead of silently touching the player job.",
+      "Fixed: the jobmgmt.hard_grade_desc locale string was cut off mid-sentence in both tr and en, so the final grade-reset confirmation showed half a sentence."
+    ],
+    "updateFiles": [
+      "framework/jobs.lua",
+      "server/jobs.lua",
+      "server/database.lua",
+      "server/ckbackup.lua",
+      "ui/app.js",
+      "ui/search.js",
+      "locales/tr.json",
+      "locales/en.json",
+      "config.lua",
+      "config_server.lua",
+      "fxmanifest.lua"
+    ]
   }
 ]
