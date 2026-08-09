@@ -54,6 +54,7 @@
       "server/discord/commands.lua",
       "server/ckbackup.lua",
       "ui/app.js",
+      "locales/*.json",
       "config.lua",
       "fxmanifest.lua",
       "setup/README.md"
