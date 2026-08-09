@@ -6,5 +6,52 @@
       "First public release of fx-showroom — vehicle showroom and donate management system with a cinematic preview (QBCore)."
     ],
     "updateFiles": []
+  },
+  {
+    "version": "1.0.1",
+    "date": "2026-08-10",
+    "critical": true,
+    "changelog": [
+      "This release touches almost every file, so replace the whole folder rather than picking single files out of the list below. Keep your own config.lua, config_cars.lua, locales/ and bridge/ — all four are escrow_ignored and your edits survive.",
+      "SECURITY FIX: the test drive registered whatever network id the client sent it, and deleted that entity server-side when the drive ended. A crafted payload could therefore make the server delete an entity the player did not own. The reported entity is now verified to exist, to be a vehicle, to carry a plate this resource issued, and to be within 50m of the reporting player, with a per-player cap.",
+      "Hardened every admin write: vehicle meta is limited to a 17-field whitelist with type, length and range checks (NaN and infinity are rejected), categories are sanitised, and all privileged events are rate limited per player.",
+      "Multi-framework support: Qbox and ESX now work alongside QBCore, plus a standalone mode, detected automatically. Qbox has no GetCoreObject(), so permissions and player lookups go through the qbx_core exports; ESX gets its own table and column mapping (owned_vehicles / users / identifier). Set Config.Framework if detection ever picks the wrong one.",
+      "Full localisation: every string the player or admin sees now comes from locales/ — English and Turkish ship with the resource, 188 keys each. Missing keys fall back to English, never to a raw key. Console output stays English on purpose.",
+      "Performance: the client used to send two or three NUI messages every frame. They are now batched into one message and only sent when a value actually changes, so an idle camera sends nothing. The 285-vehicle catalogue is cached instead of being rebuilt on every menu open.",
+      "The ownership panel resolves owners in two queries instead of one per row, and understands the ESX schema, including legacy tables where the model is stored inside the props JSON rather than in its own column.",
+      "Optional integrations (target, vehicle keys, fuel, notifications, weather sync) moved into bridge/, which is escrow_ignored. Each is a single documented function, so an unsupported keys or fuel resource can be wired in without touching the rest of the script.",
+      "Added setup/README.md: numbered installation steps, admin permission setup for each framework, an integration table, how to add a language, a verification checklist and troubleshooting.",
+      "Removed the showroom-location subsystem, which was written to disk and sent to the interface but never read anywhere, along with its two server events and json/showrooms.json. Delete that file when you update. Also removed eight unused NUI callbacks, the unused Config.TestDrive.AllowedCategories and Config.Viewer.pickPadding settings, and the browser-only demo block from the interface.",
+      "UPGRADING: two new settings were added to config.lua — Config.Locale (\"en\" or \"tr\") and Config.Framework (\"auto\"). Since config.lua is escrow_ignored your existing file is kept, so add them by hand. Without them the resource still starts, defaulting to English with automatic framework detection."
+    ],
+    "updateFiles": [
+      "bridge/framework.lua",
+      "bridge/server.lua",
+      "bridge/client.lua",
+      "shared/locale.lua",
+      "locales/en.lua",
+      "locales/tr.lua",
+      "server/main.lua",
+      "client/utils.lua",
+      "client/camera.lua",
+      "client/rotation.lua",
+      "client/vehicle.lua",
+      "client/customization.lua",
+      "client/threads.lua",
+      "client/preview.lua",
+      "client/ui.lua",
+      "client/main.lua",
+      "client/testdrive.lua",
+      "client/nui.lua",
+      "client/world.lua",
+      "ui/index.html",
+      "ui/js/app.js",
+      "ui/js/api.js",
+      "ui/js/admin.js",
+      "ui/css/main.css",
+      "setup/README.md",
+      "config.lua",
+      "fxmanifest.lua"
+    ]
   }
 ]
