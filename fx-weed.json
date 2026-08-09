@@ -6,5 +6,34 @@
       "First public release of fx-weed — Fixitfy Weed Growing System (QBCore / Qbox / ESX / Standalone)."
     ],
     "updateFiles": []
+  },
+  {
+    "version": "1.0.1",
+    "date": "2026-08-10",
+    "changelog": [
+      "Sales can now be paid in cash, bank or black money. Set it per dealer with the new currency key in config/sales.lua, and override it per product. Black money is handed to the player as an inventory item instead of landing in an account, so illegal income stays dirty until it is laundered.",
+      "Leaving currency out keeps the old behaviour exactly: existing configs keep paying cash and need no changes.",
+      "The black money item name is yours to set through the new Config.Items.blackMoney key (default black_money). fx-weed does not create that item - it has to already exist in your inventory resource.",
+      "If a player's inventory is too full to receive a black money payout, the sale is refused before anything is taken and the player keeps the product. There is no state where goods are removed without payment.",
+      "An invalid currency value is reported in the server console and falls back to cash instead of failing silently. On start fx-weed also warns if black money is configured without an inventory bridge, or if cash/bank is configured on a standalone server.",
+      "The same currency field works in config/shops.lua for buying, so players can spend black money on seeds and tools. Exception: with tgiann-inventory the shop window and its payment are handled by tgiann itself, so the setting does not reach it. Dealer sales are unaffected.",
+      "Sale history now records which currency was used. The database updates itself on first start - there is no SQL to run."
+    ],
+    "updateFiles": [
+      "server/currency.lua",
+      "server/sales_service.lua",
+      "server/shop_service.lua",
+      "server/repository.lua",
+      "shared/constants.lua",
+      "shared/sales_setup.lua",
+      "config/shared.lua",
+      "config/sales.lua",
+      "config/shops.lua",
+      "locales/tr.lua",
+      "locales/en.lua",
+      "setup/sql/install.sql",
+      "setup/README.md",
+      "fxmanifest.lua"
+    ]
   }
 ]
