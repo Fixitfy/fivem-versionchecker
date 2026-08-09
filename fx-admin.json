@@ -33,5 +33,30 @@
       "config_server.lua",
       "fxmanifest.lua"
     ]
+  },
+  {
+    "version": "1.2.0",
+    "date": "2026-08-09",
+    "changelog": [
+      "Ambulance / death-system bridge: revive and full heal now go through whichever medical script the server runs, instead of only restoring health on the ped. Wasabi Advanced Ambulance is supported in both v1 and v2 (folder named wasabi_ambulance, wasabi_ambulance_v2 or wasabi_ambulancev2), alongside the existing qb-ambulancejob, Renewed-Ambulance and esx_ambulancejob.",
+      "Fixed: on servers running Wasabi, revive reported success and did nothing. The panel, the /revive keybind and the Discord /revive and /revive-all commands all restored health while Wasabi kept its own death state, so the player stayed down and was told they had been revived. Wasabi revives from the server through an export, not from the client, so the whole flow was moved server side.",
+      "Fixed: full heal left Wasabi players capped and still bleeding. Wasabi derives max health from limb damage and keeps injuries server side, so healing the ped alone could not clear them. Heal now clears injuries and limb health through the script, and no longer writes health from the client where Wasabi owns that value.",
+      "New config key: Config.Ambulance (default auto) pins the medical script - auto, wasabi, qb, renewed, esx or none.",
+      "Fixed: CK History could not find older records. The list only ever carried the newest 200 rows and the search box filtered those rows in the browser, so a CK outside that window read as 'not found' in the panel even though the backup was still in the database and still restorable. Search and the status tabs now run as SQL on the server, so every record is reachable regardless of the list window.",
+      "CK History search accepts Discord ID, Steam hex and license as well as name, citizenid, job and the admin who performed the CK. The backup table stores only citizenid and license, so a Discord ID or Steam hex is resolved through the identifier ledger first - the Discord lookup also scans online players, so an account never written to the ledger is still found.",
+      "Fixed: the counters above CK History showed the list length instead of the real totals, so Total CK Records sat pinned at the 200 ceiling and told the admin that was all of them. They are now counted across the whole table.",
+      "CK History selection survives a new search. The restore basket keeps the record itself, not just its id, so selecting one character and then searching for another no longer drops the first from the basket."
+    ],
+    "updateFiles": [
+      "framework/ambulance.lua",
+      "server/actions.lua",
+      "client/teleport.lua",
+      "server/discord/commands.lua",
+      "server/ckbackup.lua",
+      "ui/app.js",
+      "config.lua",
+      "fxmanifest.lua",
+      "setup/README.md"
+    ]
   }
 ]
