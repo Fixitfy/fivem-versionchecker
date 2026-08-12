@@ -6,5 +6,23 @@
       "First public release of fx-uwu — UwU Cafe - shoulder plushies, roaming cats and an in-game shop placement editor (QBCore)."
     ],
     "updateFiles": []
+  },
+  {
+    "version": "1.0.1",
+    "date": "2026-08-12",
+    "critical": true,
+    "changelog": [
+      "Fixed a freeze in the /plushdev placement editor: pressing Sil (Delete) on a point locked the panel on screen with the mouse cursor stuck, and restarting the resource did not clear it - the admin had to reconnect. The delete button asked for confirmation through a browser dialog, which the FiveM interface layer cannot draw, so the panel stopped responding while waiting for an answer that never came. Deleting now asks inside the panel itself.",
+      "Placement mode can now always be closed with ESC. The key is handled by the script rather than the panel, so an interface problem can no longer leave an admin locked behind a cursor with no way out. Typing in a text box is unaffected.",
+      "While placement mode is open the panel and the script exchange a heartbeat. If the panel stops answering for any reason, placement mode closes itself and releases the mouse instead of leaving the admin stuck.",
+      "Deleting the last remaining point no longer breaks the panel.",
+      "Deleting a point is now instant. Previously the whole list was destroyed and every prop reloaded from scratch, which could stall the panel for several seconds on larger lists.",
+      "After a delete the panel now states that the change only becomes permanent once KAYDET (Save) is pressed, so points are no longer thought to be gone when they are still in the config."
+    ],
+    "updateFiles": [
+      "client/dev_shop.lua",
+      "html/dev.html",
+      "fxmanifest.lua"
+    ]
   }
 ]
