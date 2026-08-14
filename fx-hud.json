@@ -18,12 +18,15 @@
       "New console command /fxweaponimg prints the detected image folder, the resolved item name and every URL that was tried for the weapon in hand. Use it if a picture does not appear — it tells you whether the folder, the item name or the file itself is the problem.",
       "The ammo counter now reads magazine / spare instead of magazine / total. A freshly loaded pistol used to read 12 / 12 because the game counts the rounds in the magazine as part of the total; it now reads 12 / 0 and the spare count drops as magazines are used. The bar under the counter follows the magazine, so it stays meaningful when the spare count reaches zero.",
       "Ammo is now read continuously while a weapon is drawn, including while the inventory or pause menu is open, and every frame during a reload. Previously the counter froze whenever the HUD was hidden, so ammo taken from the inventory did not show up until the first shot was fired.",
+      "The weapon panel can now be moved and scaled in the layout editor like every other widget. It was missing from the editor's element list, so it could not be selected at all and stayed where it was when the money panel was moved, which is how it ended up sitting on top of the cash and bank rows. It is also forced visible while the editor is open, so it can be placed without drawing a weapon first.",
+      "Fixed the ammo bar stretching across the whole top-right column and drawing over the money rows. It was being positioned against that column instead of the weapon panel it belongs to.",
       "Pressing Z no longer blows the minimap up to full screen. GTA expands the radar on that key by itself, so a keybind change was not enough; the control is now blocked every frame. Config.Minimap.bigMapKey now ships as false, and the new Config.Minimap.blockBigMapKey turns the block on and off.",
       "UPGRADING: config.lua is escrow_ignored, so your own file is kept and will not have the new keys. Both features still work without touching it — the inventory list falls back to the built-in one, and the Z block turns itself on only if no big map key is set. To disable the Z block while keeping your key, or to add your own inventory folder, copy Config.Weapon.itemImage / imageSources and Config.Minimap.blockBigMapKey over from the new config.lua."
     ],
     "updateFiles": [
       "c/weapon.lua",
       "c/minimap.lua",
+      "s/main.lua",
       "ui/index.html",
       "ui/assets/main.js",
       "ui/assets/style.css",
