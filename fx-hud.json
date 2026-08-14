@@ -6,5 +6,27 @@
       "First public release of fx-hud — Miami Neon, all-in-one FiveM HUD (QBCore / ESX / QBox / Standalone)."
     ],
     "updateFiles": []
+  },
+  {
+    "version": "1.0.1",
+    "date": "2026-08-14",
+    "changelog": [
+      "The weapon widget now shows the item picture and the item label from your inventory instead of the generic weapon drawing, so a pistol looks like the pistol your players see in their bag.",
+      "The image folder is found on its own, no setup needed: tgiann-inventory (inventory_images/images), ox_inventory (read from the inventory:imagepath convar, so a moved folder or a CDN still works), qb-inventory, qs-inventory, lj-inventory, ps-inventory (html/images) and codem-inventory (html/itemimages). Anything else can be added as one line under Config.Weapon.imageSources.",
+      "Mixed .png and .webp item pictures in the same inventory are handled. Both extensions are tried and the first one that loads wins; the working folder and extension are then remembered, so switching weapons does not retry the misses. If an item has no picture at all, the built-in drawing stays — the widget never shows a broken image.",
+      "The label follows the same rule: it is read from ox_inventory or from your shared items list, so a renamed weapon item reads the same in the HUD as it does in the inventory. Custom weapons your framework knows about are picked up automatically.",
+      "New console command /fxweaponimg prints the detected image folder, the resolved item name and every URL that was tried for the weapon in hand. Use it if a picture does not appear — it tells you whether the folder, the item name or the file itself is the problem.",
+      "Pressing Z no longer blows the minimap up to full screen. GTA expands the radar on that key by itself, so a keybind change was not enough; the control is now blocked every frame. Config.Minimap.bigMapKey now ships as false, and the new Config.Minimap.blockBigMapKey turns the block on and off.",
+      "UPGRADING: config.lua is escrow_ignored, so your own file is kept and will not have the new keys. Both features still work without touching it — the inventory list falls back to the built-in one, and the Z block turns itself on only if no big map key is set. To disable the Z block while keeping your key, or to add your own inventory folder, copy Config.Weapon.itemImage / imageSources and Config.Minimap.blockBigMapKey over from the new config.lua."
+    ],
+    "updateFiles": [
+      "c/weapon.lua",
+      "c/minimap.lua",
+      "ui/index.html",
+      "ui/assets/main.js",
+      "ui/assets/style.css",
+      "config.lua",
+      "fxmanifest.lua"
+    ]
   }
 ]
