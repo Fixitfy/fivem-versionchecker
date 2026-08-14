@@ -1,0 +1,10 @@
+[
+  {
+    "version": "1.0.0",
+    "date": "2026-08-15",
+    "changelog": [
+      "First public release of fx-chat — chat system with command suggestions, a general chat window, roleplay actions and job channels (QBCore / standalone)."
+    ],
+    "updateFiles": []
+  }
+]
