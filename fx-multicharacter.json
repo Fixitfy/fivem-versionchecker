@@ -6,5 +6,37 @@
       "First public release of fx-multicharacter — cinematic multicharacter selection for QBCore with an in-game scene editor."
     ],
     "updateFiles": []
+  },
+  {
+    "version": "1.0.1",
+    "date": "2026-08-04",
+    "changelog": [
+      "Qbox and ESX are now supported alongside QBCore. Everything framework specific moved into a new framework/ folder, one file per core, and the right one is picked automatically on start. The console prints which it chose, for example [fx-multicharacter] framework: qb (qb-core).",
+      "Qbox: written against the qbx_core exports and ox_lib callbacks. Qbox moved the licence out of the players table into users at some point and not every install has players.cid, so instead of assuming, the script inspects the database once on start and builds its character queries from what is actually there. It prints the result, for example Qbox schema: licence in users, slot from charinfo.cid. Starting items stay with qbx_core/ox_inventory.",
+      "ESX: ESX has no built-in idea of multiple characters, so the adapter uses the identifier-prefix convention (char1:licence, char2:licence) and loads the chosen one through esx:onPlayerJoined — the same mechanism esx_multicharacter uses. That means esx_multicharacter has to be removed, and the script warns in the console if it sees it running. The users columns are mapped onto the character data the rest of the script expects (firstname, lastname, dateofbirth to birthdate, sex to gender, accounts to cash/bank). Nationality has no ESX column, so that field is discarded.",
+      "ESX deletion only removes the users row and the saved appearance. Anything else keyed by identifier — owned_vehicles, properties, licences — is deliberately left alone rather than guessed at. framework/esx.lua marks the spot to add your own deletes, and setup/integration/framework.md explains it.",
+      "The framework adapters are escrow_ignored, so you can adjust them for your own build without waiting for an update. framework/esx.lua marks the four spots most likely to need it.",
+      "The clothing resource is now detected on its own: illenium-appearance, fivem-appearance or qb-appearance. If one with a different API is found instead (qb-clothing, esx_skin, skinchanger, bl_appearance, rcore_clothing, ak47_clothing) the console names it and points at the adapter to edit, rather than silently skipping the editor. Config.AppearanceResource now defaults to 'auto'; naming a resource still works and turns detection off.",
+      "Config.Huds now takes exports as well as events, so HUDs that expose ShowHud/HideHud instead of firing events work without a bridge resource. fx-hud and mHud ship preconfigured. Export calls are wrapped so a HUD that renamed its export cannot break the spawn flow.",
+      "qb-core is no longer a hard dependency in fxmanifest.lua. It had to go, otherwise the resource would refuse to start on an ESX or Qbox server. Detection retries for 30 seconds, so a core that starts after this resource is fine.",
+      "UPGRADING: config.lua is escrow_ignored, so your own file is kept and will not have the new keys. Nothing breaks — the old Config.Framework = 'qb-core' is recognised and mapped to the QBCore adapter automatically, and a missing Config.CoreResource is handled. To take the new behaviour, copy these two lines over from the new config.lua: Config.Framework = 'auto' (now 'auto' | 'qb' | 'qbx' | 'esx') and Config.CoreResource = '' (only needed if you renamed your core resource). Also worth copying: the fx-hud entry in Config.Huds, and Config.AppearanceResource = 'auto'.",
+      "UPGRADING: fxmanifest.lua must be replaced, not merged — the new framework/ files are listed in shared_scripts and in escrow_ignore."
+    ],
+    "updateFiles": [
+      "fxmanifest.lua",
+      "framework/bridge.lua",
+      "framework/init.lua",
+      "framework/qb.lua",
+      "framework/qbox.lua",
+      "framework/esx.lua",
+      "shared/locale.lua",
+      "appearance.lua",
+      "client/main.lua",
+      "server/main.lua",
+      "server/editor.lua",
+      "config.lua",
+      "setup/README.md",
+      "setup/integration/framework.md"
+    ]
   }
 ]
