@@ -116,6 +116,7 @@ lines to paste.
 | fx-dj | [fx-dj.json](fx-dj.json) | `server/versionchecker.lua` |
 | fx-fishing | [fx-fishing.json](fx-fishing.json) | `server/versionchecker.lua` |
 | fx-foodpacket | [fx-foodpacket.json](fx-foodpacket.json) | `versionchecker.lua` |
+| fx-gameplaycam | [fx-gameplaycam.json](fx-gameplaycam.json) | `server/versionchecker.lua` |
 | fx-hud | [fx-hud.json](fx-hud.json) | `s/versionchecker.lua` |
 | fx-lbphone-billing | [fx-lbphone-billing.json](fx-lbphone-billing.json) | `server/versionchecker.lua` |
 | fx-lbphone-company | [fx-lbphone-company.json](fx-lbphone-company.json) | `server/versionchecker.lua` |
