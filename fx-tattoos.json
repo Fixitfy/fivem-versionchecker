@@ -6,5 +6,31 @@
       "First public release of fx-tattoos — server-validated tattoo shop, illenium-appearance compatible (QBCore / Qbox / ESX)."
     ],
     "updateFiles": []
+  },
+  {
+    "version": "1.0.1",
+    "date": "2026-08-17",
+    "changelog": [
+      "Full localization. Config.Locale now actually works: every text a player sees — the whole menu, notifications, body zone names, the map blip, the /tattoos chat suggestion and even the transaction labels in your framework's money log — comes from the new locales/ folder. Ships with 10 languages: tr (default), en, de, fr, es, pt-br, pl, it, nl, ar.",
+      "Half of the menu was hardcoded in Turkish regardless of settings; that is gone. Any key missing from a language falls back to English, so a partial translation never leaves a blank text. Adding your own language is copying locales/en.lua and translating it — the folder is escrow_ignored.",
+      "Percent values follow the language too (tr shows %50, everyone else 50%), and the confirmation dialogs, capacity line and search texts are all translated.",
+      "Config.Camera.DragSensitivity now actually does something — the UI was using its own hardcoded value and ignoring the setting.",
+      "config.lua rewritten with short one-line comments so it is actually scannable. Config.Text, Config.ZoneLabels, Config.Blip.Name and Config.NewTattoos.Label were removed — those texts live in the locales now. No default value or behavior changed.",
+      "UPGRADING: replace the whole resource folder. If you keep your own edited config.lua, it still works untouched — the removed text tables are simply ignored and your Config.Locale value picks the language (your old file has \"en\", set it to the language you want). If you customized any texts, move them into the matching keys in locales/<language>.lua."
+    ],
+    "updateFiles": [
+      "fxmanifest.lua",
+      "config.lua",
+      "locales/ (new folder, 10 languages)",
+      "shared/locale.lua (new)",
+      "client/shop.lua",
+      "client/nui.lua",
+      "client/bucket.lua",
+      "server/shop.lua",
+      "server/bucket.lua",
+      "ui/index.html",
+      "ui/app.js",
+      "README.md"
+    ]
   }
 ]
