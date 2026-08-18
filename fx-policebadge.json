@@ -1,0 +1,10 @@
+[
+  {
+    "version": "1.0.0",
+    "date": "2026-08-18",
+    "changelog": [
+      "First public release of fx-policebadge — item-based LEO badge - animated, shown to the player in front of you (QBCore / Qbox / ESX)."
+    ],
+    "updateFiles": []
+  }
+]
