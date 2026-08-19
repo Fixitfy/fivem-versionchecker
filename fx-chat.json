@@ -6,5 +6,20 @@
       "First public release of fx-chat — chat system with command suggestions, a general chat window, roleplay actions and job channels (QBCore / standalone)."
     ],
     "updateFiles": []
+  },
+  {
+    "version": "1.0.1",
+    "date": "2026-08-19",
+    "changelog": [
+      "Idle CPU fixed. The client key loop ran at Wait(0), so it burned a frame slot on every player forever and the resource never dropped below 0.01 ms in the resource monitor even with the chat closed. It now polls at 100 ms while the chat is closed and 50 ms while it is open, which reads as 0.00 ms idle. Nothing was removed: the T fallback that opens the chat when another resource disables the controls (death screens, handcuffs, animations) and the raw-ESC emergency close both work exactly as before.",
+      "Fixed: closing the chat with ESC while the open key was still held reopened it instantly. The key now has to be released once before it counts as a new press.",
+      "The input box fades in when the chat opens (0.16s), so the slower key poll comes across as an animation instead of a delay.",
+      "UPGRADING: drop in the three files below. No config change, no new setting — configs/ and locales/ are untouched."
+    ],
+    "updateFiles": [
+      "fxmanifest.lua",
+      "client/main.lua",
+      "html/css/style.css"
+    ]
   }
 ]
