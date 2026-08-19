@@ -35,5 +35,36 @@
       "config.lua",
       "fxmanifest.lua"
     ]
+  },
+  {
+    "version": "1.0.2",
+    "date": "2026-08-19",
+    "changelog": [
+      "NEW — Config.Branding: the colours of the server name, the character name, the ID badge and the UTC stamp are now set from the config instead of the stylesheet. The flowing gradient that runs through the server name and the character name takes its colour stops, its speed and its step interval from there, and can be switched off entirely; with it off no timer is created at all, which is the lightest the interface gets. Every colour left empty falls back to the theme, so only what you fill in changes. The ID badge and the UTC stamp are drawn as two layers — a coloured tint over a dark base — and both layers are exposed, so setting the two tints to transparent gives you a flat background. Picking the black-and-white theme still overrides everything, as it should.",
+      "The HUD is noticeably lighter on the client. The status loop asked the framework for the full player table five times a second, and because that call crosses the resource boundary it serialised the whole table — inventory and metadata included — on every single tick. Hunger and thirst now read from a cache that qb-core and qbx_core refresh themselves whenever player data changes, so the expensive call happens once at login instead of continuously. Servers whose players carry full inventories will see the biggest difference.",
+      "Values that drift constantly — compass heading, engine RPM, vehicle heading, drift angle and aircraft altitude — no longer send a message to the interface on every tick. Each one now has a small threshold and is only sent once it has moved far enough to be visible on screen. This is where the time actually goes in a HUD: every update is a JSON message into the browser process, which costs far more than reading a game native. Speed is deliberately left out of this, since it is the number players actually read.",
+      "Two loops that ran every frame — hiding GTA's own HUD components, and blocking the Z key from expanding the radar — were merged into one. Both still run every frame because the natives they use require it, but a frame loop costs something simply by existing, so one loop instead of two removes that overhead outright. With both features switched off in the config, no frame loop is created at all.",
+      "The Refresh Rate setting in the menu now applies inside vehicles. The vehicle loop had its interval hard-coded, so a player who chose Low to save frames still received sixteen updates a second while driving — the heaviest loop in the resource was ignoring the one setting meant to control it. Real is unchanged from before; the default now runs at ten updates a second, which is still smooth.",
+      "Street name, area and postal code are now looked up on a fixed timer instead of every third tick. Because it counted ticks, choosing the highest refresh rate made these expensive lookups run more than three times as often rather than less, which is the opposite of what that setting is for.",
+      "Config.Default entries that quietly did nothing now work: refreshRate, streamerMode, cinematic, postalOnMap, marker3D and focusRP were only ever read from a player's saved settings, so whatever you set in the config was ignored for anyone who had never opened the menu. refreshRate is worth singling out — it happened to match Config.UpdateMs, so the two disagreed silently the moment either one was changed.",
+      "Removed Config.Spotify. It was not referenced anywhere in the script, and because config.lua is a shared script it also loads on the client — a clientSecret pasted there would have been shipped to every player who connects.",
+      "Database writes are cheaper. Vehicle mileage was written with one query per plate, so eighty cars in traffic meant eighty round trips in a row; it is now a single batched statement, split into chunks. With that in place the write interval was raised from 30 to 180 seconds. Only changed records are ever written, and a clean restart or a player disconnect still writes immediately, so the only exposure is a hard crash — and at most three minutes of mileage.",
+      "Fixed the periodic save never running when the database falls back to KVP. The loop sat behind two early exits in the startup thread, so a server without oxmysql — or one where the tables could not be prepared — only saved on player disconnect and on resource stop.",
+      "UPGRADING: config.lua is escrow_ignored, so your own file is kept and will not contain the new keys. Nothing breaks without them — Config.Branding simply falls back to the built-in colours and animation, and the old flushInterval of 30 still works, it just writes more often than it needs to now that mileage is batched. To use the new colour options, copy the Config.Branding block over from the new config.lua and raise Config.Database.flushInterval to 180. Config.Spotify can be deleted from your file; it is ignored either way."
+    ],
+    "updateFiles": [
+      "c/utils.lua",
+      "c/main.lua",
+      "c/minimap.lua",
+      "c/player.lua",
+      "c/vehicle.lua",
+      "framework/qb.lua",
+      "framework/qbox.lua",
+      "s/db.lua",
+      "ui/assets/main.js",
+      "ui/assets/style.css",
+      "config.lua",
+      "fxmanifest.lua"
+    ]
   }
 ]
