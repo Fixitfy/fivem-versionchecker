@@ -6,5 +6,18 @@
       "First public release of fx-traders — fully config-driven NPC trading system with stock, cooldowns and history (QBCore)."
     ],
     "updateFiles": []
+  },
+  {
+    "version": "1.0.1",
+    "date": "2026-08-19",
+    "changelog": [
+      "When a player is turned away by a trader, the console line now also shows the detail behind the refusal — for a job requirement that is the job name the server actually read from the player. Until now that detail only went to the Discord webhook, so a server without a webhook configured had no way to see why the panel would not open.",
+      "Turn on Config.Debug in config/config.lua and walk up to the NPC once: the console prints 'erisim reddedildi: <id> | <trader> | job_not_allowed | meslek: <job>', which tells you whether the job name in your config matches the one the framework reports.",
+      "UPGRADING: replace client/, server/, shared/, web/ and fxmanifest.lua only. Keep your own config/ folder (traders, config, currencies, webhooks) — overwriting it replaces your traders with the shipped examples."
+    ],
+    "updateFiles": [
+      "server/logs.lua",
+      "fxmanifest.lua"
+    ]
   }
 ]
