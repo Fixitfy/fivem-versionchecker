@@ -1,0 +1,10 @@
+[
+  {
+    "version": "1.0.0",
+    "date": "2026-08-20",
+    "changelog": [
+      "First public release of fx-garages — server-authoritative garage system with in-game editor, real parking and vehicle showroom (QBCore / Qbox / ESX Legacy)."
+    ],
+    "updateFiles": []
+  }
+]
