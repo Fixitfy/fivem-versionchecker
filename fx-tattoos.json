@@ -32,5 +32,19 @@
       "ui/app.js",
       "README.md"
     ]
+  },
+  {
+    "version": "1.0.2",
+    "date": "2026-08-23",
+    "changelog": [
+      "Fixed leg tattoos not displaying correctly.",
+      "Fixed tattoos carrying over to the next character when switching characters without disconnecting (e.g. via fx-multicharacter/qb-multicharacter). The player's tattoo cache and citizenid binding are now reset on every character load, so a new character no longer reads or briefly shows the previous character's tattoos."
+    ],
+    "updateFiles": [
+      "fxmanifest.lua",
+      "config.lua",
+      "server/store.lua",
+      "server/shop.lua"
+    ]
   }
 ]
