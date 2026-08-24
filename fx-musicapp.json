@@ -1,0 +1,19 @@
+[
+  {
+    "version": "1.0.0",
+    "date": "2026-08-04",
+    "changelog": [
+      "First public release of fx-lbphone-music — music streaming application for LB Phone."
+    ],
+    "updateFiles": []
+  },
+  {
+    "version": "1.0.1",
+    "date": "2026-08-24",
+    "changelog": [
+      "Renamed the resource from fx-lbphone-music to fx-musicapp.",
+      "Adding a song to a playlist from any tab now places it at the top of the list instead of the end."
+    ],
+    "updateFiles": []
+  }
+]
