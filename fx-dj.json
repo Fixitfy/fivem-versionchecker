@@ -6,5 +6,27 @@
       "First public release of fx-dj — DJ and club music system with synchronised 3D audio, YouTube and Spotify playlists (QBCore)."
     ],
     "updateFiles": []
+  },
+  {
+    "version": "2.0.0",
+    "date": "2026-08-24",
+    "changelog": [
+      "The panel is completely new. Everything a DJ touches was rebuilt: a home screen, a full-size 'Now Playing' page with cover art and live palette, search, queue, playlists, favourites, recently played, soundboard, stage effects, song requests, the door and the equalizer — all in one console with a collapsible sidebar and eight themes.",
+      "THE NOTCH — walk the club while you DJ. Click the notch on top of the panel and it slides away, leaving a dock strip with the playing track, a seekable bar, transport, volume and a crowd-dance button. You are dropped straight into free look: the mouse turns the camera, W A S D walk, and the screen blur lifts so you can actually see where you are going. Press G to open the cursor and click the strip, press it again to hand the mouse back to the camera. A badge next to the notch always spells out the current mode and the key. Config.Panel.FreeLookKey picks the key and is NOT a RegisterKeyMapping — nothing is added to the player's key-bind list and nothing can clash with another resource.",
+      "/djdev — the in-game venue editor. Type it as god/admin and build a whole venue without touching config.lua: several DJ points per venue, speaker cabinets, props, spotlight/laser/smoke/particle points, the door zone, jobs and gangs, audio type and per-venue acoustics. Placement uses a real gizmo with an orbit camera, grid snap, surface snap and per-axis handles. Saving applies to every player instantly — no restart, no reconnect. Venues from config.lua are never touched; the database simply overlays them and 'Revert to config' undoes everything.",
+      "EQUALIZER — a real 10-band parametric EQ per venue with presets, a live curve and saved settings. Needs fx-sound 1.1.0 or newer; on an older fx-sound the section hides itself and audio keeps playing normally.",
+      "PORTABLE SPEAKERS — four inventory items (shelf speaker, boombox, PA cabinet, tower). Drop one anywhere and it behaves like a full DJ point: queue, panel, playlists, equalizer. They can be linked into one rig, attached to a vehicle, and survive a server restart.",
+      "STUDIO — record your own beat from the soundboard pads in game, loop it and save it to the venue.",
+      "MULTI-CABINET PA. One signal, many cabinets — the track is not played twice, a single source is fanned out to one panner per cabinet and summed, the way a real rig works. No drift, no comb filtering, and no dead spot in the gap between two speakers. Level is compensated across the cabinets so standing in the middle of five of them does not clip.",
+      "AUDIO REALISM — walls and floors muffle the music instead of it carrying through solid geometry, and stepping outside the venue drops it to the 'music leaking through the door' sound. Transitions glide instead of stepping: volume changes ramp over ~450 ms and the muffle sweeps in octaves, so crossing a wall no longer clicks.",
+      "HUD HIDING — the panel and /djdev hide your HUD while open and put it back when they close, including if the resource is stopped. fx-hud is wired out of the box and any other HUD is one line in Config.Hud, using either an export or an event.",
+      "YOUTUBE WITHOUT A SIDECAR. The default playback mode runs a hidden YouTube player in the player's own game client, so nothing is resolved on your server: no yt-dlp, no cookies, no PO tokens, no 403s. Search and playlist import default to the same no-setup path. The old yt-dlp resolver is still there if you want it.",
+      "SQL is now a single file. sql/install.sql is safe to run as many times as you like, on a fresh install or on top of any older version — tables are created only if missing and columns added by later versions are checked for before they are added. The separate update_*.sql files are gone.",
+      "UPGRADING FROM 1.0.0: replace the whole resource folder, then run sql/install.sql once. Keep your own config.lua if you like — every booth in it keeps working — but the file gained several new sections (Config.Panel, Config.Hud, Config.Speakers, Config.Sound.Occlusion, Config.NuiWatchdog), so copying your booths into the new config.lua is the cleaner path. fx-sound 1.1.0 or newer is required for the equalizer."
+    ],
+    "updateFiles": [
+      "the whole resource folder (this is a full rewrite)",
+      "sql/install.sql (run it once — replaces every update_*.sql)"
+    ]
   }
 ]
