@@ -59,5 +59,24 @@
       "fxmanifest.lua",
       "setup/README.md"
     ]
+  },
+  {
+    "version": "1.2.1",
+    "date": "2026-08-24",
+    "changelog": [
+      "txAdmin ban sync now reads txAdmin's live playersDB.json on hosts that sandbox file access to the resource folder. Symlink playersDB.json to fx-admin/txdata_players.json and the panel reads the real file - no copy to refresh, no stale snapshot. Lua's file API follows the link even inside the sandbox, which is what makes this work where an absolute path is refused.",
+      "Fixed: a symlinked txdata_players.json made the import fail completely. FiveM's virtual file system ignores a Windows reparse point, so the only reader fx-admin used could not see the link, and the import reported the file as missing while the data sat right there. Reading now goes through Lua's file API first and falls back to the virtual file system, so both a symlink and a plain copy work.",
+      "New config key: Config.TxAutoSyncMinutes (default 120) re-imports txAdmin bans on a timer. Bans issued while fx-admin is running already arrive instantly through txAdmin's events; the timer closes the gap for bans issued while fx-admin was stopped. Every import is deduplicated by txAdmin action id, so a repeat run adds only genuinely new bans and the console stays quiet unless something changed.",
+      "New config key: Config.TxImportLive (default auto) states whether the in-resource file is a symlink to live data or a static copy. A symlink is detected automatically and skips the staleness check; a copy keeps it, so an old snapshot can still never restore bans that were lifted after it was taken. Set it explicitly only if the detection guesses wrong.",
+      "fxadmin_txpath now ends with a VERDICT line naming the source that will actually be used and whether it counts as live or a copy. It also reports the byte count of the in-resource file, whether it parses as txAdmin data, and the date of the newest record it contains - enough to tell a working symlink from a stale copy at a glance.",
+      "Fixed: a double slash in the resource path (resources//[folder]/fx-admin, as some hosts report it) was carried into every candidate path fx-admin built and logged, breaking the directory walk that locates txData. The path is normalised before it is used.",
+      "The four places that each read txAdmin's ban file their own way - the startup check, the panel import, fxadmin_txrepair and the new timer - now share one reader, so they can no longer disagree about which source is available or whether it is live."
+    ],
+    "updateFiles": [
+      "server/txadmin.lua",
+      "config_server.lua",
+      "fxmanifest.lua",
+      "setup/integration/txadmin.md"
+    ]
   }
 ]
