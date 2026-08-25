@@ -6,5 +6,16 @@
       "First public release of fx-weapondamage — combat tuning workstation with a live test bench (QBCore / Qbox / ESX)."
     ],
     "updateFiles": []
+  },
+  {
+    "version": "1.0.1",
+    "date": "2026-08-26",
+    "changelog": [
+      "Fixed the damage adjustment issue — the values set in the panel now apply correctly in game.",
+      "Replace every file in the resource folder for this update."
+    ],
+    "updateFiles": [
+      "the whole resource folder — replace every file"
+    ]
   }
 ]
