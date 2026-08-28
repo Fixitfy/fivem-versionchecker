@@ -78,5 +78,16 @@
       "fxmanifest.lua",
       "setup/integration/txadmin.md"
     ]
+  },
+  {
+    "version": "1.2.2",
+    "date": "2026-08-29",
+    "changelog": [
+      "Fixed: the Discord page hung on its loading spinner forever once the bot had run its first command. A local variable in the usage-statistics block shadowed the panel's translation helper, so every label in that block threw instead of returning text, and the exception aborted the page render before any HTML reached the screen. The block is skipped while all counters are still zero, which is why the page opened normally on a fresh install and only broke after the first command - or the first denied attempt - was recorded."
+    ],
+    "updateFiles": [
+      "ui/app.js",
+      "fxmanifest.lua"
+    ]
   }
 ]
