@@ -84,11 +84,15 @@
     "date": "2026-08-29",
     "changelog": [
       "Fixed: the Discord page hung on its loading spinner forever once the bot had run its first command. A local variable in the usage-statistics block shadowed the panel's translation helper, so every label in that block threw instead of returning text, and the exception aborted the page render before any HTML reached the screen. The block is skipped while all counters are still zero, which is why the page opened normally on a fresh install and only broke after the first command - or the first denied attempt - was recorded.",
-      "Fixed: a ban lifted in txAdmin stayed banned in fx-admin when the revoke happened while the server was down. The live revoke event is only heard by a running server, and the periodic import skipped revoked actions instead of reconciling them, so the mirrored row survived every later sync and the player stayed banned by fx-admin alone. The import now deletes a mirrored ban whose txAdmin action has been revoked and tombstones the id so a later run cannot restore it. Matching is on the txAdmin action id and never on license - the bans table also holds bans fx-admin issued itself, and a license match would delete those too. The number cleaned up is reported as 'lifted' in the console and the activity log."
+      "Fixed: a ban lifted in txAdmin stayed banned in fx-admin when the revoke happened while the server was down. The live revoke event is only heard by a running server, and the periodic import skipped revoked actions instead of reconciling them, so the mirrored row survived every later sync and the player stayed banned by fx-admin alone. The import now deletes a mirrored ban whose txAdmin action has been revoked and tombstones the id so a later run cannot restore it. Matching is on the txAdmin action id and never on license - the bans table also holds bans fx-admin issued itself, and a license match would delete those too. The number cleaned up is reported as its own count in the import summary the admin sees, the console and the activity log.",
+      "Fixed: giving a vehicle to an online player reported \"player not found\". The call fails for two different reasons - the player's character data could not be read, or the spawn code is not in the vehicle catalogue - and it returns which one it was, but the panel threw that away and always showed the player error. An admin whose add-on car was simply missing from config_cars.lua was sent looking for a player who was standing right in front of them. The panel now reports the vehicle as not found when that is the real reason. The same call behind Discord's give-vehicle command compared the reason against a value the function never returns, so every failure there read as a player-data problem; it now names the spawn code it could not resolve and points at config_cars.lua."
     ],
     "updateFiles": [
       "ui/app.js",
       "server/txadmin.lua",
+      "server/vehicles.lua",
+      "server/discord/commands.lua",
+      "locales/*.json",
       "fxmanifest.lua"
     ]
   }
