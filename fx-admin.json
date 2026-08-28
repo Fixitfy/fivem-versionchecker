@@ -83,10 +83,12 @@
     "version": "1.2.2",
     "date": "2026-08-29",
     "changelog": [
-      "Fixed: the Discord page hung on its loading spinner forever once the bot had run its first command. A local variable in the usage-statistics block shadowed the panel's translation helper, so every label in that block threw instead of returning text, and the exception aborted the page render before any HTML reached the screen. The block is skipped while all counters are still zero, which is why the page opened normally on a fresh install and only broke after the first command - or the first denied attempt - was recorded."
+      "Fixed: the Discord page hung on its loading spinner forever once the bot had run its first command. A local variable in the usage-statistics block shadowed the panel's translation helper, so every label in that block threw instead of returning text, and the exception aborted the page render before any HTML reached the screen. The block is skipped while all counters are still zero, which is why the page opened normally on a fresh install and only broke after the first command - or the first denied attempt - was recorded.",
+      "Fixed: a ban lifted in txAdmin stayed banned in fx-admin when the revoke happened while the server was down. The live revoke event is only heard by a running server, and the periodic import skipped revoked actions instead of reconciling them, so the mirrored row survived every later sync and the player stayed banned by fx-admin alone. The import now deletes a mirrored ban whose txAdmin action has been revoked and tombstones the id so a later run cannot restore it. Matching is on the txAdmin action id and never on license - the bans table also holds bans fx-admin issued itself, and a license match would delete those too. The number cleaned up is reported as 'lifted' in the console and the activity log."
     ],
     "updateFiles": [
       "ui/app.js",
+      "server/txadmin.lua",
       "fxmanifest.lua"
     ]
   }
