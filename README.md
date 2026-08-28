@@ -119,6 +119,7 @@ lines to paste.
 | fx-gameplaycam | [fx-gameplaycam.json](fx-gameplaycam.json) | `server/versionchecker.lua` |
 | fx-garages | [fx-garages.json](fx-garages.json) | `server/versionchecker.lua` |
 | fx-hud | [fx-hud.json](fx-hud.json) | `s/versionchecker.lua` |
+| fx-interactions | [fx-interactions.json](fx-interactions.json) | `server/versionchecker.lua` |
 | fx-lbphone-billing | [fx-lbphone-billing.json](fx-lbphone-billing.json) | `server/versionchecker.lua` |
 | fx-lbphone-company | [fx-lbphone-company.json](fx-lbphone-company.json) | `server/versionchecker.lua` |
 | fx-lbphone-fansapp | [fx-lbphone-fansapp.json](fx-lbphone-fansapp.json) | `server/versionchecker.lua` |

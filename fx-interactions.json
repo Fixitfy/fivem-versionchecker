@@ -1,0 +1,10 @@
+[
+  {
+    "version": "1.0.0",
+    "date": "2026-08-28",
+    "changelog": [
+      "First public release of fx-interactions — client-side interaction prompts and 3D text for coordinates, entities and models (framework-independent)."
+    ],
+    "updateFiles": []
+  }
+]
