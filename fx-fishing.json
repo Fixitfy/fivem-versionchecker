@@ -92,5 +92,40 @@
       "locale/locales/en.lua",
       "fxmanifest.lua"
     ]
+  },
+  {
+    "version": "1.0.5",
+    "date": "2026-08-29",
+    "critical": true,
+    "changelog": [
+      "ox_inventory FIX - using a fishing rod did nothing on some ox_inventory servers. ox only runs a use handler for items that declare one; without it the item is silently ignored. The 5 rods and diving_suit in setup/items/ox_inventory.lua now ship with client = { event = 'fx-fishing:client:oxUseItem' }. ACTION REQUIRED: ox_inventory servers must re-paste those 6 item definitions into ox_inventory/data/items.lua. Note this is 'event', not 'export' - an export would also set consume = 1 and delete the rod on first use.",
+      "The client bridge now accepts three use paths (ox client.event, ox_inventory:usedItem as a fallback, and the qb/qbx/esx usable item) with a 750 ms debounce, so no setup can trigger a cast twice. diving_suit is routed through the same point, which also fixes the suit being equipped and unequipped in one click on ox.",
+      "PANEL FIX - the career panel opened empty for some players, showing raw locale keys (nav_market, GUIDE_RODS, page_market_sub) and empty shop lists. The NUI init message was sent on a fixed 500 ms timer and was lost whenever the browser had not finished loading, which only happened on slower machines or busy servers. The UI now announces itself with a uiReady callback and the data is sent on demand, re-sent if the ping is missed, and re-checked every time the panel opens.",
+      "CRASH FIX - a missing command name in the config made RegisterCommand throw 'native 0x5FA79B0F: Argument at index 0 was null', which killed the rest of that client file (the diving system in particular). Command registration is now nil-safe: an empty name is skipped with a console warning, and setting a command key to false disables it silently on purpose.",
+      "Framework and inventory auto-detection no longer depend on the server.cfg order. A resource that is still 'starting' is now recognised, and detection is retried for 20 seconds. Previously, starting fx-fishing before ox_inventory made every item operation silently fail.",
+      "Notifications are never dropped any more: if no framework is detected, or it arrives late, the message falls back to ox_lib instead of disappearing. A failed server callback now reports that the server did not respond instead of leaving the player with no feedback.",
+      "New diagnostics - 'fxfishdiag' (server console) prints the detected framework, inventory and the state of every related resource; '/fxfishdebug' (F8) checks every item against ox_inventory and reports whether client.event is wired; '/fxfishtest' (F8) bypasses the inventory and starts a cast directly, which separates an item-definition problem from a server-side one. On ox, missing item definitions are also listed in red on start.",
+      "Config.Debug now logs the full item-use to cast flow in F8. Setup documentation was updated with the ox_inventory use-handler requirement and a diagnosis walkthrough."
+    ],
+    "updateFiles": [
+      "bridge/framework/cl_framework.lua",
+      "bridge/framework/sv_framework.lua",
+      "bridge/inventory/cl_inventory.lua",
+      "bridge/inventory/sv_inventory.lua",
+      "client/utils.lua",
+      "client/main.lua",
+      "client/npc.lua",
+      "client/nui.lua",
+      "client/boat.lua",
+      "client/diving.lua",
+      "server/diving.lua",
+      "config/config.lua",
+      "config/config_diving.lua",
+      "locale/locales/tr.lua",
+      "locale/locales/en.lua",
+      "ui/js/app.js",
+      "setup/items/ox_inventory.lua",
+      "fxmanifest.lua"
+    ]
   }
 ]
