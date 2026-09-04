@@ -101,7 +101,8 @@
       "Money and Give Item said nothing at all when the framework refused the change: the success branch was skipped and no other branch existed, so a failure looked like a success with a missing toast. Both report the failure now and write it to the audit log. Adding money through QBCore also returns its real result instead of an unconditional true.",
       "Fixed: watching a player cost them most of their frame rate - 140 down to 30-40 on the reports. The capture page rendered the game texture through WebGL on every requestAnimationFrame, which in NUI fires as fast as the game itself renders, to feed a stream that samples 20 frames a second. Seven eighths of that work was discarded, and it was spent on the GPU the game is already using. The render is now gated to the capture rate, so a 140 fps player paints 20 frames a second instead of 140. Nothing about the stream changes: captureStream samples the canvas whenever it is painted.",
       "The video stream took noticeably long to appear when the capture page missed its opening message: the first retry was two seconds behind, so the viewer sat on a black frame for all of it. The first re-send now comes after 700ms and later attempts keep the original two-second spacing, where the delay is no longer a missed message but something actually wrong.",
-      "Fixed: Save Car registered the vehicle as owned but never put it in a garage. Give Vehicle hands the car to whichever garage adapter is active in garages.lua; Save Car stopped at the ownership row, so on any script that keeps its own state table - fx-garages among them - the vehicle existed on paper and in no garage, and its owner could not take it out anywhere. Save Car now runs the same handover, waits for the ownership row to exist first so the garage can resolve the plate, and shows the same warning as Give Vehicle when no garage script could take it."
+      "Fixed: Save Car registered the vehicle as owned but never put it in a garage. Give Vehicle hands the car to whichever garage adapter is active in garages.lua; Save Car stopped at the ownership row, so on any script that keeps its own state table - fx-garages among them - the vehicle existed on paper and in no garage, and its owner could not take it out anywhere. Save Car now runs the same handover, waits for the ownership row to exist first so the garage can resolve the plate, and shows the same warning as Give Vehicle when no garage script could take it.",
+      "New console command fxadmin_regarage, the one-off recovery for vehicles the old Save Car left owned but in no garage. It hands every owned vehicle back to the active garage adapter; cars the script already holds are left exactly as they are. Report-only by default, fxadmin_regarage uygula to run it, and it refuses on any adapter that has not declared rerunSafe - handing a vehicle to a MarkStored-style adapter a second time would rewrite its garage column and move cars their owners had parked elsewhere. The fx-garages adapter declares it, because storeVehicleByPlate is idempotent by design. garages.lua is customer-editable and kept across updates, so a server still running its own copy has to add rerunSafe = true to that adapter before the command will run - it says so rather than doing anything."
     ],
     "updateFiles": [
       "ui/app.js",
@@ -118,6 +119,7 @@
       "shared/setup.lua",
       "framework/inventory.lua",
       "framework/frameworks.lua",
+      "garages.lua",
       "server/vehicles.lua",
       "server/playtime.lua",
       "server/discord/commands.lua",
