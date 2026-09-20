@@ -125,6 +125,7 @@ lines to paste.
 | fx-lbphone-fansapp | [fx-lbphone-fansapp.json](fx-lbphone-fansapp.json) | `server/versionchecker.lua` |
 | fx-lbphone-music | [fx-lbphone-music.json](fx-lbphone-music.json) | `server/versionchecker.lua` |
 | fx-lbphone-rentalapp | [fx-lbphone-rentalapp.json](fx-lbphone-rentalapp.json) | `server/versionchecker.lua` |
+| fx-mapsapp | [fx-mapsapp.json](fx-mapsapp.json) | `server/versionchecker.lua` |
 | fx-multicharacter | [fx-multicharacter.json](fx-multicharacter.json) | `server/versionchecker.lua` |
 | fx-ownedshops | [fx-ownedshops.json](fx-ownedshops.json) | `server/versionchecker.lua` |
 | fx-policebadge | [fx-policebadge.json](fx-policebadge.json) | `server/versionchecker.lua` |
