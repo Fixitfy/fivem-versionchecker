@@ -6,5 +6,13 @@
       "First public release of fx-policebadge — item-based LEO badge - animated, shown to the player in front of you (QBCore / Qbox / ESX)."
     ],
     "updateFiles": []
+  },
+  {
+    "version": "1.0.1",
+    "date": "2026-08-18",
+    "changelog": [
+      "Fixed ox_inventory use issues."
+    ],
+    "updateFiles": []
   }
 ]
