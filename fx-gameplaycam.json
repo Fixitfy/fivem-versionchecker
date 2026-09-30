@@ -6,5 +6,13 @@
       "First public release of fx-gameplaycam — free gameplay camera (photo mode) with built-in abuse protection (standalone)."
     ],
     "updateFiles": []
+  },
+  {
+    "version": "1.0.1",
+    "date": "2026-09-30",
+    "changelog": [
+      "Resmon values have been optimized."
+    ],
+    "updateFiles": ["client/utils.lua", "client/main.lua", "client/camera.lua"]
   }
 ]
