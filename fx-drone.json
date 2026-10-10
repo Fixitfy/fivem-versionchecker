@@ -1,0 +1,10 @@
+[
+  {
+    "version": "1.0.0",
+    "date": "2026-10-11",
+    "changelog": [
+      "First public release of fx-drone — server-authoritative police surveillance drone with FLIR, spotlight, target lock, taser and location marks."
+    ],
+    "updateFiles": []
+  }
+]

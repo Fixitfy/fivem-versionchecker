@@ -115,6 +115,7 @@ lines to paste.
 | fx-animpos | [fx-animpos.json](fx-animpos.json) | `server/versionchecker.lua` |
 | fx-chat | [fx-chat.json](fx-chat.json) | `server/versionchecker.lua` |
 | fx-dj | [fx-dj.json](fx-dj.json) | `server/versionchecker.lua` |
+| fx-drone | [fx-drone.json](fx-drone.json) | `server/versionchecker.lua` |
 | fx-fishing | [fx-fishing.json](fx-fishing.json) | `server/versionchecker.lua` |
 | fx-foodpacket | [fx-foodpacket.json](fx-foodpacket.json) | `versionchecker.lua` |
 | fx-gameplaycam | [fx-gameplaycam.json](fx-gameplaycam.json) | `server/versionchecker.lua` |
