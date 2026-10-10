@@ -111,6 +111,7 @@ lines to paste.
 
 | Script | Manifest | Checker |
 |---|---|---|
+| fx-3dmap | [fx-3dmap.json](fx-3dmap.json) | `server/versionchecker.lua` |
 | fx-admin | [fx-admin.json](fx-admin.json) | `server/versionchecker.lua` |
 | fx-animpos | [fx-animpos.json](fx-animpos.json) | `server/versionchecker.lua` |
 | fx-chat | [fx-chat.json](fx-chat.json) | `server/versionchecker.lua` |

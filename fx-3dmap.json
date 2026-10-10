@@ -1,0 +1,10 @@
+[
+  {
+    "version": "1.0.0",
+    "date": "2026-10-11",
+    "changelog": [
+      "First public release of fx-3dmap — interactive 3D world map, location editor and personal pins."
+    ],
+    "updateFiles": []
+  }
+]
