@@ -120,6 +120,7 @@ lines to paste.
 | fx-foodpacket | [fx-foodpacket.json](fx-foodpacket.json) | `versionchecker.lua` |
 | fx-gameplaycam | [fx-gameplaycam.json](fx-gameplaycam.json) | `server/versionchecker.lua` |
 | fx-garages | [fx-garages.json](fx-garages.json) | `server/versionchecker.lua` |
+| fx-gocart | [fx-gocart.json](fx-gocart.json) | `server/versionchecker.lua` |
 | fx-gps | [fx-gps.json](fx-gps.json) | `server/versionchecker.lua` |
 | fx-hacker | [fx-hacker.json](fx-hacker.json) | `server/versionchecker.lua` |
 | fx-hud | [fx-hud.json](fx-hud.json) | `s/versionchecker.lua` |
