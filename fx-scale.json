@@ -1,0 +1,10 @@
+[
+  {
+    "version": "1.0.0",
+    "date": "2026-10-11",
+    "changelog": [
+      "First public release of fx-scale — ped height and body scaling with an orbit camera, live ruler and presets."
+    ],
+    "updateFiles": []
+  }
+]

@@ -130,6 +130,7 @@ lines to paste.
 | fx-multicharacter | [fx-multicharacter.json](fx-multicharacter.json) | `server/versionchecker.lua` |
 | fx-ownedshops | [fx-ownedshops.json](fx-ownedshops.json) | `server/versionchecker.lua` |
 | fx-policebadge | [fx-policebadge.json](fx-policebadge.json) | `server/versionchecker.lua` |
+| fx-scale | [fx-scale.json](fx-scale.json) | `server/versionchecker.lua` |
 | fx-showroom | [fx-showroom.json](fx-showroom.json) | `server/versionchecker.lua` |
 | fx-sound | [fx-sound.json](fx-sound.json) | `server/versionchecker.lua` |
 | fx-stash | [fx-stash.json](fx-stash.json) | `server/versionchecker.lua` |
