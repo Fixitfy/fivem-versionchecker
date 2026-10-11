@@ -130,7 +130,6 @@ lines to paste.
 | fx-hud | [fx-hud.json](fx-hud.json) | `s/versionchecker.lua` |
 | fx-interactions | [fx-interactions.json](fx-interactions.json) | `server/versionchecker.lua` |
 | fx-lbphone-billing | [fx-lbphone-billing.json](fx-lbphone-billing.json) | `server/versionchecker.lua` |
-| fx-lbphone-company | [fx-lbphone-company.json](fx-lbphone-company.json) | `server/versionchecker.lua` |
 | fx-lbphone-fansapp | [fx-lbphone-fansapp.json](fx-lbphone-fansapp.json) | `server/versionchecker.lua` |
 | fx-lbphone-music | [fx-lbphone-music.json](fx-lbphone-music.json) | `server/versionchecker.lua` |
 | fx-lbphone-rentalapp | [fx-lbphone-rentalapp.json](fx-lbphone-rentalapp.json) | `server/versionchecker.lua` |
