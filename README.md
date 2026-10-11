@@ -121,6 +121,7 @@ lines to paste.
 | fx-foodjobs | [fx-foodjobs.json](fx-foodjobs.json) | `server/versionchecker.lua` |
 | fx-foodpacket | [fx-foodpacket.json](fx-foodpacket.json) | `versionchecker.lua` |
 | fx-gameplaycam | [fx-gameplaycam.json](fx-gameplaycam.json) | `server/versionchecker.lua` |
+| fx-garageapp | [fx-garageapp.json](fx-garageapp.json) | `server/versionchecker.lua` |
 | fx-garages | [fx-garages.json](fx-garages.json) | `server/versionchecker.lua` |
 | fx-gocart | [fx-gocart.json](fx-gocart.json) | `server/versionchecker.lua` |
 | fx-gps | [fx-gps.json](fx-gps.json) | `server/versionchecker.lua` |
