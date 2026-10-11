@@ -135,6 +135,7 @@ lines to paste.
 | fx-lbphone-rentalapp | [fx-lbphone-rentalapp.json](fx-lbphone-rentalapp.json) | `server/versionchecker.lua` |
 | fx-loadingscreen | [fx-loadingscreen.json](fx-loadingscreen.json) | `server/versionchecker.lua` |
 | fx-mapsapp | [fx-mapsapp.json](fx-mapsapp.json) | `server/versionchecker.lua` |
+| fx-metubeapp | [fx-metubeapp.json](fx-metubeapp.json) | `server/versionchecker.lua` |
 | fx-multicharacter | [fx-multicharacter.json](fx-multicharacter.json) | `server/versionchecker.lua` |
 | fx-npccontrol | [fx-npccontrol.json](fx-npccontrol.json) | `server/versionchecker.lua` |
 | fx-ownedshops | [fx-ownedshops.json](fx-ownedshops.json) | `server/versionchecker.lua` |
