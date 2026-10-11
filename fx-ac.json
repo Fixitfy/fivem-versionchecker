@@ -1,0 +1,10 @@
+[
+  {
+    "version": "1.0.0",
+    "date": "2026-10-11",
+    "changelog": [
+      "First public release of fx-ac — server-side anticheat: crash vector detection, risk scoring, bans and evidence."
+    ],
+    "updateFiles": []
+  }
+]
